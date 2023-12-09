@@ -45,3 +45,14 @@ func SendMailCustom(smtpHost string, smtpPort int, email string, password string
 	}
 	return send, nil
 }
+
+func SaveSMTPConfig(Host string, Port int, Email string, Password string) error {
+
+	err := service.SaveConfig(Host, Port, Email, Password)
+
+	if err != nil {
+		return err
+	}
+
+	return nil
+}

@@ -90,7 +90,6 @@ func CheckEnvironment() bool {
 func MountAndSendMail(to []string, message []byte) (bool, error) {
 
 	dbConfig := CheckEnvironment()
-
 	if !dbConfig {
 		return false, errors.New("no.database.config")
 	}
@@ -116,10 +115,103 @@ func MountAndSendMail(to []string, message []byte) (bool, error) {
 	return send, nil
 }
 
+// ExecSendMail sends an email using the provided SMTP server address, authentication, sender and recipient addresses, and message.
+//
+// Parameters:
+// - addr: the address of the SMTP server to use.
+// - auth: the authentication mechanism to use when connecting to the SMTP server.
+// - from: the sender's email address.
+// - to: a list of recipient email addresses.
+// - msg: the message to be sent.
+//
+// Returns:
+// - bool: a boolean value indicating whether the email was sent successfully or not.
+// - error: an error object if there was an error sending the email.
 func ExecSendMail(addr string, auth smtp.Auth, from string, to []string, msg []byte) (bool, error) {
 	err := smtp.SendMail(addr, auth, from, to, msg)
 	if err != nil {
 		return false, err
 	}
 	return true, nil
+}
+
+// SaveLog saves the SMTP configuration to the database.
+//
+// It takes a domain.SMTPConfig parameter and returns an error.
+func SaveConfigDb(config domain.SMTPConfig) error {
+
+	dbConfig := CheckEnvironment()
+	if !dbConfig {
+		return errors.New("no.database.config")
+	}
+
+	gormDB, mongoClient, err := dbhandler.GetConnection()
+
+	if err != nil {
+		return err
+	}
+
+	if gormDB == nil && mongoClient == nil {
+		return errors.New("no.database.connection")
+	}
+
+	if gormDB != nil {
+		errGorm := dbhandler.InsertSMTPConfig(gormDB, config)
+		if errGorm != nil {
+			return errGorm
+		}
+	}
+
+	if mongoClient != nil {
+		errMongo := mongodb.InsertSMTPConfig(mongoClient, config)
+		if errMongo != nil {
+			return errMongo
+		}
+	}
+
+	return nil
+
+}
+
+// NewSMTPConfig creates a new SMTPConfig object.
+//
+// Parameters:
+// - Host: the host of the SMTP server (string).
+// - Port: the port of the SMTP server (int).
+// - Email: the email address to be used for authentication (string).
+// - Password: the password to be used for authentication (string).
+//
+// Return type:
+// - SMTPConfig: the newly created SMTPConfig object.
+func newSMTPConfig(Host string, Port int, Email string, Password string) domain.SMTPConfig {
+	return domain.SMTPConfig{
+		Host:     Host,
+		Port:     Port,
+		Email:    Email,
+		Password: Password,
+	}
+}
+
+// SaveConfig saves the SMTP configuration to the database.
+//
+// Parameters:
+// - Host: the host of the SMTP server.
+// - Port: the port number of the SMTP server.
+// - Email: the email address to use for authentication.
+// - Password: the password to use for authentication.
+//
+// Returns:
+// - error: an error if there was a problem saving the configuration.
+func SaveConfig(Host string, Port int, Email string, Password string) error {
+
+	config := newSMTPConfig(Host, Port, Email, Password)
+
+	err := SaveConfigDb(config)
+	if err != nil {
+
+		return err
+	}
+
+	return nil
+
 }
