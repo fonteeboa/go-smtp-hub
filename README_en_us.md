@@ -53,9 +53,11 @@ MONGODB_URI: Sets the connection URI for MongoDB.
 MONGODB_DBNAME: Name of the MongoDB database to be used.
 ```
 <h4 align="center"> <strong>General Configuration</strong> </h4>
+
 ```
 DATABASE_TYPE: Specifies the type of database to be used (Values: sqlite, postgres, mysql, mongodb).
 ```
+
 <h4 align="center"> <strong>Notes</strong> </h4>
 
 To use functions related to the SMTP Hub's database, using the DATABASE_TYPE variable is mandatory, as some validations are performed based on this variable before calling the routines.
