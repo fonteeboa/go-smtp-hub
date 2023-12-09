@@ -3,12 +3,12 @@
 
 <p align="center"> <strong>Open-Source Send Email Assistant</strong> </p>
 
-[![link to Go version](https://img.shields.io/github/go-mod/go-version/fonteeboa/go-log-guardian)](https://img.shields.io/github/go-mod/go-version/fonteeboa/go-log-guardian)
+[![link to Go version](https://img.shields.io/github/go-mod/go-version/fonteeboa/go-smtp-hub)](https://img.shields.io/github/go-mod/go-version/fonteeboa/go-smtp-hub)
 [![MIT license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
-[![Go.Dev reference](https://img.shields.io/badge/go.dev-reference-blue?logo=go&logoColor=white)](https://pkg.go.dev/github.com/fonteeBoa/go-log-guardian)
-[![go report card](https://goreportcard.com/badge/github.com/fonteeBoa/go-log-guardian "go report card")](https://goreportcard.com/report/github.com/fonteeBoa/go-log-guardian)
+[![Go.Dev reference](https://img.shields.io/badge/go.dev-reference-blue?logo=go&logoColor=white)](https://pkg.go.dev/github.com/fonteeBoa/go-smtp-hub)
+[![go report card](https://goreportcard.com/badge/github.com/fonteeBoa/go-smtp-hub "go report card")](https://goreportcard.com/report/github.com/fonteeBoa/go-smtp-hub)
 
-<span style="color:red;">**English README**</span>: Dive into the English version of the project's documentation [here](https://github.com/fonteeboa/go-log-guardian/blob/master/README_en_us.md)
+<span style="color:red;">**English README**</span>: Dive into the English version of the project's documentation [here](https://github.com/fonteeboa/go-smtp-hub/blob/master/README_en_us.md)
 
 O SMTP Hub é uma biblioteca desenvolvida em Go focada em simplificar o processo de envio de e-mails por SMTP. Projetada para oferecer uma experiência simplificada, esta biblioteca pode ser configurada e integrada com quatro tipos de bancos de dados diferentes.
 
@@ -58,11 +58,11 @@ MONGODB_DBNAME: Nome do banco de dados MongoDB a ser utilizado.
 <h4 align="center"> <strong>Configuração Geral</strong> </h4>
 
 ```
-DATABASE_TYPE: Especifica o tipo de banco de dados a ser utilizado pelo Log Guardian (Valores: sqlite, postgres, mysql, mongodb).
+DATABASE_TYPE: Especifica o tipo de banco de dados a ser utilizado (Valores: sqlite, postgres, mysql, mongodb).
 ```
 
 <h4 align="center"> <strong>Observações</strong> </h4>
 
 Para utilizar as funções vinculadas ao banco do SMTP Hub, é obrigatório o uso da variável DATABASE_TYPE, pois algumas validações são executadas com base nesta variável antes de chamar as rotinas.
 
-Certifique-se de fornecer valores válidos e corretos para cada uma dessas variáveis de ambiente. Isso garante uma conexão adequada e o funcionamento correto do Log Guardian com o banco de dados desejado.
+Certifique-se de fornecer valores válidos e corretos para cada uma dessas variáveis de ambiente. Isso garante uma conexão adequada e o funcionamento correto da biblioteca com o banco de dados desejado.

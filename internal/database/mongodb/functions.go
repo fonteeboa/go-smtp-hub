@@ -10,15 +10,14 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
-// InsertSMTPConfig inserts a base log into the specified MongoDB collection.
+// InsertSMTPConfig inserts a SMTP configuration into the database.
 //
-// Client is the MongoDB client used to connect to the database.
-// log is the base log to be inserted.
-// Returns an error if the insertion fails.
-func InsertSMTPConfig(Client *mongo.Client, log domain.SMTPConfig) error {
+// It takes a *mongo.Client and a domain.SMTPConfig as parameters.
+// It returns an error.
+func InsertSMTPConfig(Client *mongo.Client, config domain.SMTPConfig) error {
 	collection := getCollection(Client, "smtpConfig")
 
-	_, err := collection.InsertOne(context.Background(), log)
+	_, err := collection.InsertOne(context.Background(), config)
 	return err
 }
 
