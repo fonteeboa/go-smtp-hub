@@ -46,6 +46,13 @@ func SendMailCustom(smtpHost string, smtpPort int, email string, password string
 	return send, nil
 }
 
+// SaveSMTPConfig saves the SMTP configuration.
+//
+// Host is the SMTP server host.
+// Port is the port number for the SMTP server.
+// Email is the email address for authentication.
+// Password is the password for authentication.
+// Returns an error if there was a problem saving the configuration.
 func SaveSMTPConfig(Host string, Port int, Email string, Password string) error {
 
 	err := service.SaveConfig(Host, Port, Email, Password)
