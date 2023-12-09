@@ -5,8 +5,8 @@
 
 [![link to Go version](https://img.shields.io/github/go-mod/go-version/fonteeboa/go-smtp-hub)](https://img.shields.io/github/go-mod/go-version/fonteeboa/go-smtp-hub)
 [![MIT license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
-[![Go.Dev reference](https://img.shields.io/badge/go.dev-reference-blue?logo=go&logoColor=white)](https://pkg.go.dev/github.com/fonteeBoa/go-smtp-hub)
-[![go report card](https://goreportcard.com/badge/github.com/fonteeBoa/go-smtp-hub "go report card")](https://goreportcard.com/report/github.com/fonteeBoa/go-smtp-hub)
+[![Go.Dev reference](https://img.shields.io/badge/go.dev-reference-blue?logo=go&logoColor=white)](https://pkg.go.dev/github.com/fonteeboa/go-smtp-hub)
+[![go report card](https://goreportcard.com/badge/github.com/fonteeboa/go-smtp-hub "go report card")](https://goreportcard.com/report/github.com/fonteeboa/go-smtp-hub)
 
 <span style="color:red;">**English README**</span>: Dive into the English version of the project's documentation [here](https://github.com/fonteeboa/go-smtp-hub/blob/master/README_en_us.md)
 
