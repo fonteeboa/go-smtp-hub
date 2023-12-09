@@ -1,4 +1,3 @@
-
 <h1 align="center"> SMTP Hub </h1>
 
 <p align="center"> <strong>Open-Source Send Email Assistant</strong> </p>
